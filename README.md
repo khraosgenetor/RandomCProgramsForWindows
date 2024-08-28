@@ -52,7 +52,7 @@
 | File Name | Description |
 | --- | --- |
 | $name.c | The Source Code |
-| $name | Compilation file |
+| $name.exe | Executable file |
 | $name.i | Pure C in Pre-Processing where header files are imported entirely |
 | $name.a | Pure assembly for the C-File |
 | $name.o | Output file before its name changes |
