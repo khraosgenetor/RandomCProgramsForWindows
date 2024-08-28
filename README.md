@@ -1,7 +1,7 @@
-# Random C Programs For Linux
+# Random C Programs For Windows
 
 - **NOTE:** Almost all programs have READMEs describing them. If not, will work on it soon.
-- **NOTE:** The output files currently only work for Linux
+- **NOTE:** The output files only work for Windows
 
 ## Basic Programs Descriptions:
 
