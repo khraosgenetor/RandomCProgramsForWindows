@@ -62,10 +62,14 @@ LFE13:
 LC0:
 	.ascii "Enter the string to check if it is a palindrome (within 100 characters): \0"
 LC1:
+	.ascii "\12\0"
+LC2:
 	.ascii "The string is a palindrome.\0"
 	.align 4
-LC2:
+LC3:
 	.ascii "The string is not a palindrome.\0"
+LC4:
+	.ascii "Press any key to continue...\0"
 	.text
 	.globl	_main
 	.def	_main;	.scl	2;	.type	32;	.endef
@@ -88,6 +92,11 @@ LFB14:
 	leal	124(%esp), %eax
 	movl	%eax, (%esp)
 	call	_fgets
+	movl	$LC1, 4(%esp)
+	leal	124(%esp), %eax
+	movl	%eax, (%esp)
+	call	_strcspn
+	movb	$0, 124(%esp,%eax)
 	leal	124(%esp), %eax
 	movl	%eax, 4(%esp)
 	leal	24(%esp), %eax
@@ -103,13 +112,16 @@ LFB14:
 	call	_strcmp
 	testl	%eax, %eax
 	jne	L5
-	movl	$LC1, (%esp)
+	movl	$LC2, (%esp)
 	call	_puts
 	jmp	L6
 L5:
-	movl	$LC2, (%esp)
+	movl	$LC3, (%esp)
 	call	_puts
 L6:
+	movl	$LC4, (%esp)
+	call	_puts
+	call	_getchar
 	movl	$0, %eax
 	leave
 	.cfi_restore 5
@@ -121,6 +133,8 @@ LFE14:
 	.def	_strlen;	.scl	2;	.type	32;	.endef
 	.def	_printf;	.scl	2;	.type	32;	.endef
 	.def	_fgets;	.scl	2;	.type	32;	.endef
+	.def	_strcspn;	.scl	2;	.type	32;	.endef
 	.def	_strcpy;	.scl	2;	.type	32;	.endef
 	.def	_strcmp;	.scl	2;	.type	32;	.endef
 	.def	_puts;	.scl	2;	.type	32;	.endef
+	.def	_getchar;	.scl	2;	.type	32;	.endef

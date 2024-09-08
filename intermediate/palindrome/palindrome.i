@@ -1,7 +1,7 @@
-# 1 "palindrome.c"
+# 1 ".\\palindrome.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "palindrome.c"
+# 1 ".\\palindrome.c"
 # 1 "a:\\mingw\\include\\stdio.h" 1 3
 # 38 "a:\\mingw\\include\\stdio.h" 3
        
@@ -437,7 +437,7 @@ int vswscanf (const wchar_t *__restrict__, const wchar_t * __restrict__, __built
 
 
 
-# 2 "palindrome.c" 2
+# 2 ".\\palindrome.c" 2
 # 1 "a:\\mingw\\include\\string.h" 1 3
 # 34 "a:\\mingw\\include\\string.h" 3
        
@@ -611,10 +611,10 @@ extern inline __attribute__((__gnu_inline__)) __attribute__((__always_inline__))
 
 
 
-# 3 "palindrome.c" 2
+# 3 ".\\palindrome.c" 2
 
 
-# 4 "palindrome.c"
+# 4 ".\\palindrome.c"
 void reverse_string(char str[]) {
     int n = strlen(str);
     for (int i = 0; i < n / 2; i++) {
@@ -629,10 +629,14 @@ int main(int argc, char *argv[])
   printf("Enter the string to check if it is a palindrome (within 100 characters): ");
   char string[100], rev_string[100];
   fgets(string, 100, 
-# 17 "palindrome.c" 3
+# 17 ".\\palindrome.c" 3
                     (&_iob[0])
-# 17 "palindrome.c"
+# 17 ".\\palindrome.c"
                          );
+
+
+  string[strcspn(string, "\n")] = 0;
+
   strcpy(rev_string, string);
   reverse_string(rev_string);
   if (strcmp(string, rev_string) == 0) {
@@ -640,5 +644,7 @@ int main(int argc, char *argv[])
   } else {
     printf("The string is not a palindrome.\n");
   }
+  printf("Press any key to continue...\n");
+  getchar();
   return 0;
 }
